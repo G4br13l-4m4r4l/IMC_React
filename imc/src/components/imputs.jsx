@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-
+import {calculate} from '../helpers/imc.js'
 
 
 export default function Dados(){
     
     const [Heightfield, setHeight] = useState(0);
     const [weightfield, setweight] = useState(0);
-
+    const [show, setShowItem] = useState(null);
     function handleCalculateButton(){
         if(Heightfield && weightfield){
-
+            setShowItem( calculate(Heightfield, weightfield));
         }else{
             alert("Preencha todos os campos!")
         }

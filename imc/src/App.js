@@ -1,8 +1,9 @@
-import React, { Component, useState } from 'react';
+import React, { Component} from 'react';
 import './App.css';
 import Dados from './components/imputs';
-import powered from './assets/11.png';
-
+import powered from './assets/12.jpg';
+import {levels} from './helpers/imc.js';
+import GridItem from './components/GridItem/GridItem';
 
 
 class App extends Component {
@@ -15,8 +16,9 @@ class App extends Component {
       <div className='main'>
         <header>
           <div className='headerContainer'>
-            <img src={powered} alt="logo" width={150}/>
-            developed by @dev.gabriel.amaral
+            <img className='logo' src={powered} alt="logo"/>
+
+            <h3 className='title_cred'>developed by @dev.gabriel.amaral</h3>
           </div>
         </header>
         <div className='container'>
@@ -27,7 +29,12 @@ class App extends Component {
             <Dados/>
           </div>
           <div className='rightSide'>
-            ...
+            <div className='grid'>
+              {levels.map((item, key)=>(
+                // <div key={key}>{item.title}</div>
+                <GridItem key={key} imc={item.imc} item={item.color} icon={item.icon} title={item.title}/>
+              ))}
+            </div>
           </div>
 
         </div>
